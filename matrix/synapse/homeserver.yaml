@@ -1,0 +1,39 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "cb5.recrate.dev"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    resources:
+    - compress: false
+      names:
+      - client
+      - federation
+    tls: false
+    type: http
+    x_forwarded: true
+database:
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
+log_config: "/data/cb5.recrate.dev.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "P-xWJRGFel-_Jrtvu6flEPC:=Nt+CJMN:n*TJmQ9IaQkPTQ:ut"
+report_stats: false
+macaroon_secret_key: "q2#j.O,n4oga=Y5+rOxaf2b2p6IeBH-aar@=7W0RdyR.w_.nHn"
+form_secret: "jhg+&mbQv8he1l~p3c_j,o8XC4IenQRyDvmN4*bOt,KB,tVqtL"
+signing_key_path: "/data/cb5.recrate.dev.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+
+
+# vim:ft=yaml
